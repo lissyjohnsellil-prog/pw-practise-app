@@ -1,0 +1,8 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","316","web tables","chromium","2025-10-14","failed","2025-10-14","","uiComponents.spec.ts","",""
+"","210","checkboxes","chromium","2025-10-14","failed","2025-10-14","","uiComponents.spec.ts","",""
+"","5128","input fields","chromium","2025-10-14","failed","2025-10-14","Form layouts page","uiComponents.spec.ts","",""
+"","5137","radio buttons","chromium","2025-10-14","failed","2025-10-14","Form layouts page","uiComponents.spec.ts","",""
+"","0","lists and dropdowns","chromium","2025-10-14","skipped","2025-10-14","","uiComponents.spec.ts","",""
+"","218","tooltip","chromium","2025-10-14","failed","2025-10-14","","uiComponents.spec.ts","",""
+"","185","dialog box","chromium","2025-10-14","failed","2025-10-14","","uiComponents.spec.ts","",""
