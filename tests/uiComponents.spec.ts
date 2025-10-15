@@ -1,6 +1,7 @@
 import {test,expect} from '@playwright/test'
 import { using } from 'rxjs'
 import {faker} from '@faker-js/faker'
+import { argosScreenshot } from "@argos-ci/playwright";
 
 //test.describe.configure({mode: 'parallel'})
 test.beforeEach(async ({page})=>{
@@ -16,7 +17,7 @@ test.beforeEach(async ({page})=>{
  await page.getByText('Form Layouts').click()
     })
 
- test('input fields', async({page},testInfo)=> {
+ test.only('input fields', async({page},testInfo)=> {
    if(testInfo.retry){
 //do something if you want to clean up the code before retry 2 
    }
@@ -25,14 +26,15 @@ test.beforeEach(async ({page})=>{
 await usingTheGridEmailInput.fill('test2@test.com')
 await usingTheGridEmailInput.clear()
 await usingTheGridEmailInput.pressSequentially('test2@test.com') //, {delay : 500})// press sequentially it will create delay in keystroke
-
+await argosScreenshot(page, "usingTheGridEmailInput");
 
 //generic assertion
 const inputValue = await usingTheGridEmailInput.inputValue()
 expect(inputValue).toEqual('test2@test.com')
 await page.screenshot({path: 'screenshots/formslayoutspage.png'}) //screenshots
-await page.locator('nb-card', {hasText:"Using the Grid"}).getByRole('textbox',{name : "Email"}).screenshot({path: 'screenshots/usingthegridemailinput.png'})
-const buffer = await page.screenshot()
+await page.locator('nb-card', {hasText:"Using the Grid"}).getByRole('textbox',{name : "Email"})//.screenshot({path: 'screenshots/usingthegridemailinput.png'})
+//const buffer = await page.screenshot()
+await argosScreenshot(page, "input fields");
 //console.log(buffer.toString('base64'))
 
 //locator assertion
