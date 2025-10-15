@@ -17,7 +17,7 @@ test.beforeEach(async ({page})=>{
  await page.getByText('Form Layouts').click()
     })
 
- test.only('input fields', async({page},testInfo)=> {
+ test('input fields', async({page},testInfo)=> {
    if(testInfo.retry){
 //do something if you want to clean up the code before retry 2 
    }
@@ -26,7 +26,7 @@ test.beforeEach(async ({page})=>{
 await usingTheGridEmailInput.fill('test2@test.com')
 await usingTheGridEmailInput.clear()
 await usingTheGridEmailInput.pressSequentially('test2@test.com') //, {delay : 500})// press sequentially it will create delay in keystroke
-await argosScreenshot(page, "usingTheGridEmailInput");
+
 
 //generic assertion
 const inputValue = await usingTheGridEmailInput.inputValue()
@@ -59,19 +59,19 @@ await expect(usingTheGridForm).toHaveScreenshot()
 // expect(await usingTheGridForm.getByRole('radio', {name:"Option 2"}).isChecked()).toBeTruthy// not checked anymore
 })
  })
-test('checkboxes', async({page})=>{
+test.only('checkboxes', async({page})=>{
  await page.getByText('Modal & Overlays').click()
  await page.getByText('Toastr').click()
 
 await page.getByRole('checkbox', {name: "Hide on click"}).uncheck({force: true}) // or click () force is used to click the hidden elements
 await page.getByRole('checkbox', {name: "Hide on click"}).uncheck({force: true})
-
+await argosScreenshot(page, "hide on click");
 //const allBoxes = page.getByRole('checkbox', {name : "Prevent arising of duplicate toast"})
 const allBoxes = page.getByRole('checkbox')
  for(const box of await allBoxes.all()){
 await box.uncheck({force:true})
 expect(await box.isChecked()).toBeFalsy() // for uncheck we need to use falsy 
-
+await argosScreenshot(page, "checkboxes");
 
 
  }
